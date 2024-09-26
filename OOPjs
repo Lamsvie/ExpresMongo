@@ -1,0 +1,52 @@
+//produit afin de stocker les propriétés pour l'id, le nom et le prix du produit.
+class Produit {
+    constructor(id, nom, prix, qtit){
+        this.id = id,
+        this.nom = nom,
+        this.prix = prix,
+        this.qtit = qtit
+    }
+  }
+  
+  //Créez une classe d'objet pour l'élément du panier d'achat afin de stocker les propriétés pour le produit et sa quantité.
+  class Panier extends Produit{
+    constructor(prix, qtit){
+      super(prix),
+      this.qtit = qtit
+    }
+    //calculer le prix total de l'élément.
+    total_price(){
+      return total = this.qtit * prix
+    }
+  }
+  
+  //Créez une autre classe d'objet pour le panier d'achat qui contient un tableau d'instances de ShoppingCartItem.
+  class ShoppingCartItem {
+    constructor(){
+      this.items = []
+    }
+    //add item
+    additem(item){
+      this.items.push(item)
+    }
+    //remove item
+    removeitem(item){
+      this.items.pop(item)
+    }
+    //total prix dans panier
+    pricetotal(){
+      console.log(this.items.reduce(((total, value) => total +=(value.prix * value.qtit)),0));
+      
+    }
+  }
+  const cart = new Produit(12, "md", 2, 2)
+  const cart1 = new Produit(10, "dm", 2, 2)
+  const cart2 = new Produit(14, "mo", 1, 1)
+  const cartlist = new ShoppingCartItem()
+  cartlist.additem(cart)
+  cartlist.additem(cart1)
+  cartlist.additem(cart2)
+  cartlist.pricetotal()
+cartlist.removeitem()
+  
+  console.log(cartlist);
