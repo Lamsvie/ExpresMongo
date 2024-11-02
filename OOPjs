@@ -10,7 +10,7 @@ class Produit {
   
   //Créez une classe d'objet pour l'élément du panier d'achat afin de stocker les propriétés pour le produit et sa quantité.
   class Panier extends Produit{
-    constructor(prix, qtit){
+    constructor(prix, qtit) {
       super(prix),
       this.qtit = qtit
     }
@@ -50,3 +50,4 @@ class Produit {
 cartlist.removeitem()
   
   console.log(cartlist);
+

@@ -21,21 +21,31 @@ export const createProduit = (req, res, next)=>{
 }
 
 //get all product
-export const getAllProduct = (req, res, next) => {
-    Produit.find().then(
-        (products) => res.status(200).json(products)
-    ).catch((err) => res.status(400).json({
-        error: err
-    }))
+export const getAllProduct = async (req, res, next) => {
+    try {
+        const allprodut = await Produit.find().populate('category').exec() 
+        
+        res.status(200).json(allprodut)
+    
+    } catch (error) {
+        return res.status(400).json({
+            error: err
+        })
+    }
 }
 
 //get one product
-export const getOneProduct = (req, res, next) => {
-    Produit.findOne({_id: req.params.id}).then(
-        (product) => res.status(200).json(product)
-    ).catch((err) => res.status(400).json({
-        error: err
-    }))
+export const getOneProduct = async (req, res, next) => {
+    try {
+        const getOnProduct = await Produit.findOne({_id: req.params.id}).populate('category').exec()
+        
+        res.status(200).json(getOnProduct)
+        
+    } catch (error) {
+        res.status(400).json({
+            error: err
+        })
+    }
 }
 
 //update one product
